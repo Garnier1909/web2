@@ -2,7 +2,12 @@
 if (isset($_FILES["upfile"] ) && $_FILES["upfile"]["error"] ==0 ) {
     $file_name = $_FILES["upfile"]["name"];  //"1.jpg"ファイル名取得
    $tmp_path  = $_FILES["upfile"]["tmp_name"]; //"/usr/www/tmp/1.jpg"アップロード先のTempフォルダ
-   $file_dir_path = "upload/";  //画像ファイル保管先
+   $file_dir_path = "upload/";  //画像ファイル保管先   
+    
+   $extension = pathinfo($file_name, PATHINFO_EXTENSION);
+   $uniq_name = date("YmdHis").md5(session_id()).".".$extension;
+   $file_name = $uniq_name;
+    
    $img=""; 
    // FileUpload [--Start--]
    if ( is_uploaded_file( $tmp_path ) ) {
