@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<title>infobox show[one/Multiple]</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>html,body{height:100%;}body{padding:0;margin:0;}h1{padding:0;margin:0;font-size:50%;}</style>
+</head>
+<body>
+
+
+<!-- MAP[START] -->
+<h1>Click on the pin. (Select 1 to 5 as the second argument of the function. The result changes.)</h1>
+<div id="myMap" style="width:100vw;height:100vh;"></div>
+<!-- MAP[END] -->
+
+
+<script src='https://www.bing.com/api/maps/mapcontrol?callback=GetMap&key=Al7VKW-VAhwZxh0UHQfL5A_JOFQEgyXXS1ph7Ux5nqEAgmxQvU0QEbyAqQtLcMFo' async defer></script>
+<script src="../js/BmapQuery.js"></script><!-- ←必ず読み込む -->
+<script>
+    //init
+    function GetMap() {
+        //------------------------------------------------------------------------
+        //1. Instance
+        //------------------------------------------------------------------------
+        const map = new Bmap("#myMap");
+        //------------------------------------------------------------------------
+        //2. Display Map
+        //------------------------------------------------------------------------
+        map.startMap(35.039500, 135.728500, "load", 10);
+
+        //----------------------------------------------------
+        //3. Infobox
+        //   options = new Array();
+        //   options[index] = { lat, lon, width, height, title, pinColor, description, show };
+        //----------------------------------------------------
+        const options = [];
+        options[0]={
+            "lat":35.031178,
+            "lon": 135.735092,
+            "title":"京都",
+            "pinColor":"#ff8800",
+            "height":300,
+            "width":320,
+            "description": '北野天満宮<br><img src="../img/kitano.jpeg" width="300">',
+            "show":false
+        };
+        options[1]={
+            "lat":34.951336,
+            "lon":135.771697,
+            "title":"京都",
+            "pinColor":"#dd00ff",
+            "height":300,
+            "width":320,
+            "description": '藤森神社<br><img src="../img/fujimori.jpeg" width="300">',
+            "show":false
+        };
+        options[2]={
+            "lat":34.967131,
+            "lon":135.773286,
+            "title":"京都",
+            "pinColor":"#ff3000",
+            "height":300,
+            "width":320,
+            "description": '伏見稲荷大社<br><img src="../img/fushimi_inari.jpeg" width="300">',
+            "show":false
+        };
+
+        options[3]={
+            "lat":35.028108,
+            "lon":135.678336,
+            "title":"京都",
+            "pinColor":"#00ccdd",
+            "height":300,
+            "width":320,
+            "description": '大覚寺<br><img src="../img/daikakuji.jpg" width="300">',
+            "show":false
+        };
+
+        options[4]={
+            "lat":35.014227,
+            "lon":135.747870,
+            "title":"京都",
+            "pinColor":"#eeee00",
+            "height":300,
+            "width":320,
+            "description": '二条城<br><img src="../img/nijojo.png" width="300">',
+            "show":false
+        };
+
+        //----------------------------------------------------
+        //4. Switch infoboxs
+        //   infoboxLayers(options, true); //true=one, false=Multiple
+        //----------------------------------------------------
+        map.infoboxLayers(options,true);
+
+    }
+</script>
+</body>
+</html>
