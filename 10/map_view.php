@@ -37,16 +37,17 @@ if($status==false){
     
         if($i==0){
             //1回目のみ実行
-            $img .= '"'.$row["img"].'"';
-            $lat .= $row["lat"];
-            $lon .= $row["lon"];            
+            $img  .= '"'.$row["img"].'"';
+            $lat  .= $row["lat"];
+            $lon  .= $row["lon"]; 
+            $name .= '"'.$row["name"].'"';           
 
         }else{
             //2回目以降はこちら（2回目から先頭にカンマを付与）
-            $img .= ',"'.$row["img"].'"';
-            $lat .= ",".$row["lat"];
-            $lon .= ",".$row["lon"];
-
+            $img  .= ',"'.$row["img"].'"';
+            $lat  .= ",".$row["lat"];
+            $lon  .= ",".$row["lon"];
+            $name .= ',"'.$row["name"].'"';
 
         }
         //$iをインクリメント
@@ -106,6 +107,7 @@ img{height:100px;}
 let img =[<?=$img?>];
 let lat = [<?=$lat?>];
 let lon = [<?=$lon?>];
+let name = [<?=$name?>];
 
 
 
@@ -130,7 +132,7 @@ function GetMap(){
     for (let i =0; i<len; i++){
         //* 最初にpin,次にinfoboxHtml
         map.pin(lat[i],lon[i],"#ff0000");
-        let h =  '<div><img src="upload/'+img[i]+'"></div>';
+        let h =  '<div style="background:#ffffff; padding:5px; border-radius:5px;">'+name[i]+'<br><img src="upload/'+img[i]+'"></div>';
         map.infoboxHtml(lat[i],lon[i], h);
     }
     //* map.changeMapを使って最後の座標を中心に表示する！
