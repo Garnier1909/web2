@@ -28,13 +28,7 @@ if ($status == false) {
     while ($res = $stmt->fetch(PDO::FETCH_ASSOC)) {
         $view .= '<tr>';
 
-        //削除へのリンク作成
-        $view .= '<td>';
-        $view .= '<a href="users_delete.php?id=' . $res["id"] . '">';
-        $view .= '[ユーザー削除]';
-        $view .= '</a>';
-        $view .= '</td>';
-
+        $view .= '<td' . ' style="background:' . $res["col"] . '; color:#ffffff; font-size:small;">' . $res["col"] . '</td>';
         $view .= '<td>' . $res["name"] . '</td>';
         $view .= '<td>' . $res["lid"] . '</td>';
         $view .= '<td>' . $res["mail"] . '</td>';
@@ -62,6 +56,13 @@ if ($status == false) {
         $view .= '</a>';
         $view .= '</td>';
 
+        //削除へのリンク作成
+        $view .= '<td>';
+        $view .= '<a href="users_delete.php?id=' . $res["id"] . '">';
+        $view .= '[ユーザー削除]';
+        $view .= '</a>';
+        $view .= '</td>';
+
         $view .= '</tr>'
             . PHP_EOL;  //PHP_EOLは改行コード
     }
@@ -81,19 +82,20 @@ if ($status == false) {
 
 <body>
     <style>
-        th, td {
+        th,
+        td {
             padding: 0 5px;
         }
     </style>
-    
+
     <?php include("header.php"); ?>
 
     <main>
         <div class="jumbotron" style="border-radius:10px; margin: auto 10px; padding:10px 10px 20px 10px;">
             <h2 style="font-weight: bold; margin-bottom:30px;">メンバー管理</h2>
             <table id="table_us" style="font-size: large;">
-                <tr>
-                    <th>ユーザー削除</th>
+                <tr>                  
+                    <th>カラー</th>
                     <th>名前</th>
                     <th>ログインID</th>
                     <th>メールアドレス</th>
@@ -102,6 +104,7 @@ if ($status == false) {
                     <th>役職</th>
                     <th>利用規模</th>
                     <th>編集</th>
+                    <th>ユーザー削除</th>
                 </tr>
 
                 <?php
@@ -109,7 +112,7 @@ if ($status == false) {
                 ?>
 
             </table>
-            </div>
+        </div>
     </main>
 </body>
 
