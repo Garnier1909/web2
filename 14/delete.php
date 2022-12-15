@@ -7,7 +7,7 @@ chkSsid();
 
 //1.  DB接続
 try {
-    $pdo = new PDO('mysql:dbname=gs_db;charset=utf8;host=localhost','root','root');
+    $pdo = new PDO('mysql:dbname=map_db;charset=utf8;host=localhost','root','root');
 } catch (PDOException $e) {
     exit('DBConnectError:'.$e->getMessage());
 }
@@ -18,7 +18,7 @@ $id   = $_GET["id"];
 
 
 //３．SQL文作成 //*の箇所とテーブル名を変更
-$sql = "DELETE FROM gs_an_table WHERE id=:id";
+$sql = "DELETE FROM map_tables WHERE id=:id";
 $stmt = $pdo->prepare($sql);
 
 $stmt->bindValue(":id", $id);
@@ -32,6 +32,6 @@ if($status==false) {
     $error = $stmt->errorInfo();
     exit("SQLError:".$error[2]);
 }else{
-    header("Location: select.php");
+    header("Location: map_view.php");
     exit();
 }

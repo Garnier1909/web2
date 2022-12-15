@@ -22,6 +22,7 @@ $stmt->bindValue(":sort",  $sort); //SQL:SORT用 サニタイジング（危険�
 $status = $stmt->execute(); //SQLの実行
 
 //JS用 配列文字列を作成
+$id = ""; //idの配列文字列
 $img = ""; //画像名の配列文字列
 $lat = ""; //lat:緯度の配列数値
 $lon = ""; //lon:経度の配列数値
@@ -42,6 +43,7 @@ if ($status == false) {
 
         if ($i == 0) {
             //1回目のみ実行
+            $id .= $row["id"];
             $img .= '"' . $row["img"] . '"';
             $lat .= $row["lat"];
             $lon .= $row["lon"];
@@ -51,6 +53,7 @@ if ($status == false) {
             $p_col .= '"' . $row["p_col"] . '"';
         } else {
             //2回目以降はこちら（2回目から先頭にカンマを付与）
+            $id .= "," . $row["id"];
             $img .= ',"' . $row["img"] . '"';
             $lat .= "," . $row["lat"];
             $lon .= "," . $row["lon"];
@@ -135,6 +138,7 @@ if ($status == false) {
     <script src="js/BmapQuery.js"></script>
     <script>
         //1.配列
+        let id = [<?= $id ?>];
         let img = [<?= $img ?>];
         let lat = [<?= $lat ?>];
         let lon = [<?= $lon ?>];
@@ -166,7 +170,7 @@ if ($status == false) {
             for (let i = 0; i < len; i++) {
                 //* 最初にpin,次にinfoboxHtml
                 map.pin(lat[i], lon[i], p_col[i]);
-                let h = '<div style="background:#ffffff; padding:1px 10px; border-radius: 10px 10px 10px 0px;"><h4 style="font-weight:bold;">' + name[i] + '</h4><img src="upload/' + img[i] + '" style="margin-bottom:5px;"><p style="max-width:fit-content;">' + note[i] + '</p><p style="font-size:small; color:#aaaaaa; text-align:right;">by ' + p_name[i] + '</p></div>';
+                let h = '<div style="background:#ffffff; padding:1px 10px; border-radius: 10px 10px 10px 0px;"><div style="display:flex; justify-content:space-between; align-items: center;"><h4 style="font-weight:bold;">' + name[i] + '</h4>'+'<a href="delete.php?id=' + id[i] + ' " style="font-size:large; font-weight:bold;">' + '×'+'</a></div>' + '<img src="upload/' + img[i] + '" style="margin-bottom:5px;"><p style="max-width:fit-content;">' + note[i] + '</p><p style="font-size:small; color:#aaaaaa; text-align:right;">by ' + p_name[i] + '</p></div>';
                 map.infoboxHtml(lat[i], lon[i], h);
             }
             //* map.changeMapを使って最後の座標を中心に表示する！
