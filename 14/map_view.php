@@ -129,7 +129,7 @@ if ($status == false) {
          マップの大きさ設定 
     ---------------------->
     <!-- IMG_LIST[Start] -->
-    <div id="myMap" style="width:80vw;height:85vh; margin:auto;"></div>
+    <div id="myMap" style="width:80vw;height:80vh; margin:auto;"></div>
     <!-- IMG_LIST[END] -->
 
 
@@ -170,10 +170,10 @@ if ($status == false) {
             for (let i = 0; i < len; i++) {
                 //* 最初にpin,次にinfoboxHtml
                 map.pin(lat[i], lon[i], p_col[i]);
-                let h = '<div style="background:#ffffff; padding:1px 10px; border-radius: 10px 10px 10px 0px;"><div style="display:flex; justify-content:space-between; align-items: center;"><h4 style="font-weight:bold;">' + name[i] + '</h4>'+'<a href="delete.php?id=' + id[i] + ' " style="font-size:large; font-weight:bold;">' + '×'+'</a></div>' + '<img src="upload/' + img[i] + '" style="margin-bottom:5px;"><p style="max-width:fit-content;">' + note[i] + '</p><p style="font-size:small; color:#aaaaaa; text-align:right;">by ' + p_name[i] + '</p></div>';
+                let h = '<div style="background:#ffffff; padding:1px 10px; border-radius: 10px 10px 10px 0px;  box-shadow:0 2px 2px 0 rgba(50,50,50,0.2);"><div style="display:flex; justify-content:space-between; align-items: center;"><h4 style="font-weight:bold;">' + name[i] + '</h4>'+'<a href="delete.php?id=' + id[i] + ' " style="font-size:large; font-weight:bold;">' + '×'+'</a></div>' + '<img src="upload/' + img[i] + '" style="margin-bottom:5px;"><p style="max-width:fit-content;">' + note[i] + '</p><p style="font-size:small; color:#aaaaaa; text-align:right;">by ' + p_name[i] + '</p></div>';
                 map.infoboxHtml(lat[i], lon[i], h);
             }
-            //* map.changeMapを使って最後の座標を中心に表示する！
+            //* map.changeMapを使って最後の座標を中心に表示する
             map.changeMap(lat[len - 1], lon[len - 1], "load", zoom);
         }
     </script>
