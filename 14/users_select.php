@@ -86,6 +86,23 @@ if ($status == false) {
         td {
             padding: 0 5px;
         }
+
+        th{
+            border-left:1px solid #aaaacc;
+        }
+
+        td{
+            border:1px solid #aaaacc;
+        }
+
+        .b_right{
+            border-right:1px solid #aaaacc;
+        }
+
+        table{
+            border-top: 1px solid #aaaacc;
+            border-bottom: 1px solid #aaaacc;
+        }
     </style>
 
     <?php include("header.php"); ?>
@@ -94,17 +111,17 @@ if ($status == false) {
         <div class="jumbotron" style="border-radius:10px; margin: auto 10px; padding:10px 10px 20px 10px;">
             <h2 style="font-weight: bold; margin-bottom:30px;">メンバー管理</h2>
             <table id="table_us" style="font-size: large;">
-                <tr>                  
+                <tr style="background:#cdcdcc;">                  
                     <th>カラー</th>
                     <th>名前</th>
-                    <th>ログインID</th>
+                    <th style="border-left:1px solid #aaaacc;">ログインID</th>
                     <th>メールアドレス</th>
                     <th>パスワード</th>
                     <th>性別</th>
                     <th>役職</th>
                     <th>利用規模</th>
                     <th>編集</th>
-                    <th>ユーザー削除</th>
+                    <th  class="b_right">ユーザー削除</th>
                 </tr>
 
                 <?php
