@@ -114,7 +114,7 @@ if ($status == false) {
                 <h4 style="color:#ffffff;">ようこそ、<?= $_SESSION["name"] ?>さん</h4>
                 </div>
                 <ul class="pager" style="width: 100%;">
-                    <li class="previous" style="margin-right:5px; float:left;"><a href="file_check.php">← カメラ／写真選択</a></li>
+                    <li class="previous" style="margin-right:5px; float:left;"><a href="file_check.php">← 投稿する</a></li>
                     <li class="previous" style="float:left;"><a href="file_view.php">画像一覧</a></li>
                     <li><a href="logout.php" style="float:right;">ログアウト</a></li>
                     <li><a href="users_select.php" style="margin-right:5px; float:right;">メンバー管理</a></li>
