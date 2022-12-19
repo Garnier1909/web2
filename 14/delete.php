@@ -1,7 +1,7 @@
 <?php
 session_start();
 include("funcs.php");
-//LOGINチェック → funcs.phpへ関数化
+//ログインチェック → funcs.phpへ関数化
 chkSsid();
 
 
