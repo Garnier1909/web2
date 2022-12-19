@@ -19,7 +19,7 @@
  //画像を繰返し取得表示
  foreach ($files as $file) {
      if ($file->isFile()) {
-         $list .= '<img src="' . $file->getPathname() . '"><br>';
+         $list .= '<div  style="margin:0px 5px 5px 0px"><img src="' . $file->getPathname() . '"></div><br>';
      }
  }
  
@@ -57,7 +57,7 @@ img{height:200px;}
 
  <p><input id="img_width_range" type="range" step="10" max="400" min="50" value="200"></p>
   <div class="jumbotron"><span id="heigth_txt">200px</span>
-    <div id="photarea" style="display:flex; flex-wrap: wrap;"><?=$list?></div>
+    <div id="photarea" style="display:flex; flex-wrap: wrap; border-radius: 5px;"><?=$list?></div>
   </div>
 </div>
 <!-- IMG_LIST[END] -->
